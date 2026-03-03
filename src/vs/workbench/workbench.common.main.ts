@@ -519,6 +519,7 @@ import './contrib/languageRuntime/browser/languageRuntime.contribution.js';
 import './contrib/positronIPyWidgets/browser/positronIPyWidgets.contribution.js';
 import './contrib/positronNewProject/browser/positronNewProject.contribution.js';
 import './contrib/positronKeybindings/browser/positronKeybindings.contribution.js';
+import './contrib/positronFontCustomization/browser/positronFontCustomization.contribution.js';
 import './contrib/positronQuarto/browser/positronQuarto.contribution.js';
 import './contrib/runtimeSession/browser/foregroundSessionContribution.js';
 
