@@ -30,9 +30,7 @@ configurationRegistry.registerConfiguration({
 			scope: ConfigurationScope.APPLICATION,
 			type: 'number',
 			default: 0,
-			minimum: 8,
-			maximum: 20,
-			description: nls.localize('workbench.fontSize', "Controls the font size in pixels for the workbench UI. 0 uses the default (13px)."),
+			description: nls.localize('workbench.fontSize', "Controls the font size in pixels for the workbench UI. 0 uses the default (13px). Valid range: 8-20."),
 		},
 		'workbench.fontWeight': {
 			scope: ConfigurationScope.APPLICATION,
@@ -110,7 +108,7 @@ class PositronFontCustomizationContribution extends Disposable {
 
 		// Font size
 		const fontSize = this._configurationService.getValue<number>('workbench.fontSize') ?? 0;
-		if (fontSize > 0) {
+		if (fontSize >= 8 && fontSize <= 20) {
 			style.fontSize = `${fontSize}px`;
 		} else {
 			style.removeProperty('font-size');
