@@ -1,19 +1,38 @@
 # Capturing Upstream Changes
 
-Custom changes live on the `my-font-customization` branch. `main` tracks upstream.
+Custom changes live on the `font-customisation` branch. `main` tracks upstream.
+
+Scope: workbench UI font customization (`workbench.*` settings) and notebook
+Markdown font customization (`notebookMarkdown.*` settings). Both are
+centralized in `src/vs/workbench/contrib/positronFontCustomization/`. The
+notebook Markdown values are mirrored into the stock keys
+(`notebook.markup.fontFamily`, `notebook.markup.fontSize`,
+`notebook.markdown.lineHeight`) and injected as
+`--vscode-positronNotebook-markdown-*` CSS variables consumed by
+`positronNotebook/browser/notebookCells/Markdown.css`.
 
 ## Regular update workflow
 
 ```bash
 git checkout main
 git pull
-git checkout my-font-customization
+git checkout font-customisation
 git rebase main
 ```
 
 ## Handling rebase conflicts
 
-Most likely file: `src/vs/workbench/workbench.common.main.ts` (contains the one-line import for font customization).
+Most likely file: `src/vs/workbench/workbench.common.main.ts` (contains the
+one-line import for the font customization contribution).
+
+Other files touched by this branch are Positron-specific or additive (low
+upstream conflict risk):
+
+- `src/vs/workbench/contrib/positronFontCustomization/` (entire directory)
+- `src/vs/workbench/contrib/positronNotebook/browser/notebookCells/Markdown.css`
+  (CSS variable references added to `.positron-markdown-rendered`)
+- `build/lib/stylelint/vscode-known-variables.json` (additive list of
+  allowed CSS variable names)
 
 ```bash
 # resolve conflict markers in the file, then:
