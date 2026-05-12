@@ -16,9 +16,21 @@
 
 /* These styles are taken from the vscode notebook markdown rendering styles found in extensions/markdown-language-features/notebook/index.ts */
 .positron-markdown-rendered {
-	font-size: var(--vscode-positronNotebook-markdown-font-size);
-	line-height: var(--vscode-positronNotebook-markdown-line-height);
-	font-family: var(--vscode-positronNotebook-markdown-font-family);
+	/*
+	 * Font customization for Positron notebook Markdown cells.
+	 * positronFontCustomization.contribution.ts injects the CSS variables below from the
+	 * `notebookMarkdown.*` settings onto the workbench mainContainer inline style.
+	 * When a variable is unset the rule falls back to `inherit` so the parent
+	 * (workbench) font is used.
+	 */
+	font-family: var(--vscode-positronNotebook-markdown-font-family, inherit);
+	font-size: var(--vscode-positronNotebook-markdown-font-size, inherit);
+	font-weight: var(--vscode-positronNotebook-markdown-font-weight, inherit);
+	font-feature-settings: var(--vscode-positronNotebook-markdown-font-feature-settings, inherit);
+	font-variation-settings: var(--vscode-positronNotebook-markdown-font-variation-settings, inherit);
+	letter-spacing: var(--vscode-positronNotebook-markdown-letter-spacing, inherit);
+	line-height: var(--vscode-positronNotebook-markdown-line-height, inherit);
+	/* --- End Positron --- */
 
 	img {
 		max-width: 100%;
